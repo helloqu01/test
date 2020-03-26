@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- # 모양은 테스트 ,jsp가 없기 때문에 -->
+<form action="#" accept-charset="UTF-8" name = "person_info" method = "get">
+<!-- fieldset style 속성의 해당 값들을 설정하면 됨 * 속성값을 사용할데 숫자 단위(px)를 부여해야함 -->
+	<fieldset style = "width:150px">
+	<!-- <fieldset의 /legend> 필드의 제목을 붙여줄 때 쓰임 -->
+		<legend>개인정보입력</legend>
+	<!-- <label> 일반적인 글씨들의 css를 편하게 부여하고자 만들어진 태그 -->	
+		<label>이름:</label>
+		
+		<input type = "text" name = "name"><br/><br/>
+		<label>나이:</label>
+		<input type = "text" name = "age"><br/><br/>
+	</fieldset><br/>
+
+
+<fieldset style = "width:180px; heigth:180px">
+		<legend>여가활동</legend>
+		<label>취미:</label>
+		<input type = "text" name = "hobby"><br/><br/>
+		<label>나이:</label>
+		<input type = "text" name = "specialty"><br/><br/>
+	</fieldset>
+	<input type = "submit" value ="전송"/>
+</form>
+</body>
+</html>

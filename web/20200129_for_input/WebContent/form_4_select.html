@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="form_test.jsp" accept-charset="UTF-8" name = "person_info" method = "get">
+	<fieldset style = "width:250px">
+	<legend>개인정보입력</legend>
+	지역선택(size,multiple(컨트롤 쉬프트 등으로 다중 선택가능)속성 추가)
+	<select name ="city2" size ="5" multiple>
+	<option value = "sengnam-si">성남시<option/>
+	<option value = "suwon-si">수원시<option/>
+	<option value = "yongin-si">용인시<option/>
+	<option value = "anyang-si">안양시<option/>
+	<option value = "guachen-si">과천시<option/>
+	<option value = "hanam-si">하남시<option/>
+	</select>
+	<br/><br/>
+	
+	<select name ="city1">
+	<optgroup label="서울">
+	<option value = "songpa-gu">송파구<option/>
+	<option value = "gangnam-gu">강남구<option/>
+	<option value = "seocho-gu">서초구<option/>
+	<option value = "junggu-gu">중구구<option/>
+	</optgroup>
+	
+	<optgroup label="경기도">
+	<option value = "sengnam-si">성남시<option/>
+	<option value = "suwon-si">수원시<option/>
+	<option value = "yongin-si">용인시<option/>
+	<option value = "anyang-si">안양시<option/>
+	</optgroup>
+	</select>
+	<br/><br/>
+	<input type = "submit" value ="submit"/>
+	<input type = "reset" value ="reset"/><br/><br/>
+	</fieldset>
+
+
+</form>
+
+
+</body>
+</html>

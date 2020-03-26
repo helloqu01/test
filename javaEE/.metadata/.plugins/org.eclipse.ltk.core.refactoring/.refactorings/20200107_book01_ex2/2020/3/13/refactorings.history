@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MethodClass.java&apos; to &apos;20200107_books01_ex/src/com.ohj.books&apos;&#x0A;- Original project: &apos;20200107_book01_ex2&apos;&#x0A;- Destination element: &apos;20200107_books01_ex/src/com.ohj.books&apos;&#x0A;- Original element: &apos;com.ohj.books.MethodClass.java&apos;" description="Copy compilation unit" destination="=20200107_books01_ex/src&lt;com.ohj.books" element1="/src&lt;com.ohj.books{MethodClass.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1584956292743" units="1" version="1.0"/>
+</session>

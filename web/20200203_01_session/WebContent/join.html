@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 화면</title>
+</head>
+<body>
+	<h3>로그인 페이지</h3>
+	<form action="JoinServlet">
+	ID: <input type = "text"  pattern = "[a-z0-9_]*" name= "ID" required="required" placeholder="영문 숫자 입력"><br>
+	PW: <input type = "password" pattern = "[a-z0-9_]*"  name = "PW" required="required" placeholder="영문 숫자입력" ><br>
+	
+	<input type = "submit" value="가입 " onclick="location.href='merber.jsp'"/>
+	<input type = "reset" value="취소">
+	</form>
+	
+</body>
+</html>

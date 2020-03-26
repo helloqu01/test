@@ -1,0 +1,195 @@
+package com.ohj.books;
+
+import java.util.ArrayList;
+
+public class MethodClass {
+	
+	private DataClass dc =new DataClass();
+	
+	public MethodClass() {//기본 생성자
+	}
+
+	//데이터 연산 결과 확인 메소드
+	public void dataTest (){
+	
+		ArrayList<BookClass> books=this.dc.books;//변수
+		for(int i=0;i<dc.books.size();i++){
+	
+			System.out.print(dc.books.get(i).price+"원\t");			
+			System.out.print(dc.books.get(i).dc+"%\t");	
+			System.out.println(dc.books.get(i).dc_price+"원");
+			}	
+	}
+	
+	//첵제목을 포함하는 검색하는 메소드
+	public void searchTitle(String keyword){
+	
+		ArrayList<BookClass> books=this.dc.books;//변수
+	
+		for(int i=0;i<books.size();i++){
+			if(books.get(i).title.contains(keyword)){		
+			System.out.println(books.get(i).title);	
+			}
+		}
+	}
+	
+	//저자를 검색하여 책 제목을 출력하는 메소드 
+	public void searchAuthor(String keyword){
+	
+		ArrayList<BookClass> books=this.dc.books;//변수
+		
+			for(int a=0;a<books.size();a++){
+				if(books.get(a).author.contains(keyword)){
+					System.out.println(books.get(a).title);
+				}
+			}
+	}​
+	
+//방법 3: 새로운 클래스를 설계하려 사용
+
+//ResultClass.java
+
+//public class ResultClass{
+
+//String title,author;
+
+//public ResultClass(){}
+
+//public ResultClass(String t,String a({
+
+//this.title=t;
+
+//this.author=a;
+
+//}
+
+//}
+
+//메소드의 return 타입 : ArrayList<ResultClass>로 변경
+
+//매소드 내부
+
+//ArrayList<ResultClass> r= new ArrayList<ResultClass>();
+
+//for()내부의if()내부
+
+//r.add(new BookClass(books.get(i).title, books.get(i).author));
+
+//for 종료후
+
+//return r;
+
+	public ArrayList<ResultClass> searchPress(String keyword){ 
+		
+		ArrayList<BookClass> books=this.dc.books;//검색할 전체 데이터
+		ArrayList<ResultClass> r = new ArrayList<ResultClass>();//검색결과 저장
+		
+		for(int i=0;i<books.size();i++){
+			if(books.get(i).press.contains(keyword)){
+				r.add(new ResultClass(books.get(i).title,books.get(i).author));
+			}
+		}
+		
+		return r;						
+	} 
+}
+/////////////////////////////////////////////////////////////////////////////
+
+/*//방법 2번
+//ArrayList를 사용 : 검색결과가 각기 다르기 때문에...
+
+//방법 1 : 두 개의 문자열을 쉼표로 구분하여 하나의 문자열로 만들기
+
+//ArrayList<String> r= new ArrayList<String>();
+
+//r.add (books.get(i).title+","+books.get(i).author);
+
+//return r;
+
+public ArrayList<BookClass> searchPress(String keyword){ 
+
+ArrayList<BookClass> books=this.dc.books;//검색할 전체 데이터
+
+ArrayList<BookClass> r = new ArrayList<BookClass>();//검색결과 저장
+
+​
+
+for(int i=0;i<books.size();i++){
+
+if(books.get(i).press.contains(keyword)){
+
+r.add(new BookClass(books.get(i).title,books.get(i).author));
+
+}
+
+}
+
+return r;
+
+} */
+
+//////////////////////////////////////////////////////////////////////
+
+/*//출판사를 검색하여 책 제목과 저자를 출력하는 메소드
+
+//방법 1번
+
+//ArrayList를 사용 : 검색결과가 각기 다르기 때문에...
+
+//방법 1 : 두 개의 문자열을 쉼표로 구분하여 하나의 문자열로 만들기
+
+//ArrayList<String> r= new ArrayList<String>();
+
+//r.add (books.get(i).title+","+books.get(i).author);
+
+//return r;
+
+public ArrayList<String> searchPress(String keyword){ 
+
+ArrayList<BookClass> books=this.dc.books;//검색할 전체 데이터
+
+ArrayList<String> r = new ArrayList<String>();//검색결과 저장
+
+for(int i=0;i<books.size();i++){
+
+if(books.get(i).press.contains(keyword)){
+
+r.add(books.get(i).title+","+books.get(i).author);
+
+}
+
+}
+
+return r;
+
+}*/
+
+/////////////////////////////////////////////////////////////////////
+
+//ArrayList를 사용 : 검색결과가 각기 다르기 때문에...
+
+//방법 2 : 두 개의 결과 값을 하나의 객체에 저장 후 arratList에 추가(기존 클래스 활용)
+
+//ArrayList<BookClass> r= new ArrayList<BookClass>();
+
+//r.add(new BookClass(books.get(i).title, books.get(i).author));
+
+//public Class BookClass{
+
+//public BookClass(String t, String a){// 방법 2를 위한 추가 생성자
+
+// this.title=t;
+
+// this.authir=a;
+
+// }
+
+//}
+
+
+
+
+
+​
+
+​

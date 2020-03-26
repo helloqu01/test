@@ -1,0 +1,58 @@
+package com.ohj.member;
+
+import java.util.ArrayList;//외부클래스를 가져오는 것 JRE
+import java.util.Random;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+/////////////////////////////////////////////////////////////////////////////	
+		//Rendom : 임의의 수 반환하는 메소드 보유
+		//Rendom.Class
+		Random rnd = new Random();//내장된 클래스가 아니기 때문에 import를 해줘야함(빨간줄 클릭해서 가져오기)
+		System.out.println(rnd.nextInt(5));//0,1,2,3,4
+		System.out.println(rnd.nextInt(8));//0,1,2,3,4,5,6,7
+		
+		
+/////////////////////////////////////////////////////////////////////////////			
+		//DateClass dc = new DateClass();
+		
+/////////////////////////////////////////////////////////////////////////////		
+		//ArrayList ->ArrayList.Class
+		ArrayList array = new ArrayList();//import java.util.ArrayList;를 만듬
+		array.add(10); //0번방에 들어가 있음
+		array.add(true);//1번방에 들어가 있음 아래는 같이 이어진다.
+		array.add(10.444);
+		array.add('A');
+		array.add("test"); //array는 다양한 형태를 받을 수 있다.
+		System.out.println(array.size());
+		//System.out.println(array.get(0));//0번방에 들어가 있는 10이라는 값이 나온다.
+		
+		
+		
+		for(int i=0;i<array.size();i++){
+			System.out.println(array.get(i));// 모든 값이 다 나온다.
+		}
+		System.out.println("-------------");
+		array.remove(1);//1번방에 들어가 있는 값 트루를 없앴다.remove를 사용하고 사라진 값은 그다음 방 값이 들어와 차지한다.
+		Object b =array.remove(1);//remove를 사용하여 값을 삭제하고 다시 받아 볼 수 있다.
+		System.out.println(array.size());//array 사이즈는 마음대로 늘릴 수 있다.
+		for(int i=0;i<array.size();i++){
+			System.out.println(array.get(i));// 모든 값이 다 나온다.
+		}
+		System.out.println("-------------");	
+	
+////////////////////////////////////////////////////////////////////////////		
+		/*for(int i=0; i<dc.ic.length;i++){
+		System.out.print(dc.ic[i].age+"\t");
+		System.out.print(dc.ic[i].gender+"\t");
+		System.out.print(dc.ic[i].joinDate+"\t");
+		System.out.print(dc.ic[i].lastVisitDate+"\t");
+		System.out.print(dc.ic[i].name+"\t");
+		System.out.print(dc.ic[i].numVisit);
+		System.out.print("-----");
+		}*/
+	}
+
+}

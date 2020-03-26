@@ -1,0 +1,519 @@
+
+	
+	1. JDBC 드라이버 로드
+
+1-1.Class.forName("com.mysql.jdbc.Driver");
+
+1-2. 예외처리 : ClassNotfoundException
+
+​
+
+2. 데이터베이스 연결
+
+2-1. String db_url="jdbc:mysql://localhost:3306/DB명"//127.0.0.1 //포트번호 :3306
+
+String dc_id="root";
+
+String db_pw="설치시 비밀번호";
+
+Connection con = unll;
+
+con = DriverManager.getConnection(db_url,dc_id,db_pw);
+
+2-2. 예외처리 : SQLException
+
+​
+
+3. SQL문실행
+
+3-1. Statement stmt = null;
+
+stmt= conn.createDtatement();
+
+String sql="insert into test_table values('abc','1234');
+
+int i = stmt.executeUpdate(sql);
+
+3-2. 예외처리: SQLException
+
+​
+
+4 조회결과처리
+
+​
+
+5.데이터베이스와 연결해제
+
+​
+
+​
+
+Enter password: ******
+
+Welcome to the MySQL monitor. Commands end with ; or \g.
+
+Your MySQL connection id is 4
+
+Server version: 5.1.60-community MySQL Community Server (GPL)
+
+​
+
+Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
+
+​
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+
+affiliates. Other names may be trademarks of their respective
+
+owners.
+
+​
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+​
+
+mysql> create database testdb;
+
+Query OK, 1 row affected (0.00 sec)
+
+​
+
+mysql> create database testdb;
+
+ERROR 1007 (HY000): Can't create database 'testdb'; database exists
+
+mysql> show datadases;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'datadases' at line 1
+
+mysql> show databases
+
+->
+
+->
+
+->
+
+-> show databases;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 5
+
+mysql>
+
+mysql> show databases;
+
++--------------------+
+
+| Database |
+
++--------------------+
+
+| information_schema |
+
+| mysql |
+
+| test |
+
+| testdb |
+
++--------------------+
+
+4 rows in set (0.00 sec)
+
+​
+
+mysql> use testdb;
+
+Database changed
+
+mysql> create table test (id varchar(10),pw varchar(10));
+
+Query OK, 0 rows affected (0.05 sec)
+
+​
+
+mysql> dsc test;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsc test' at line 1
+
+mysql> desc test;
+
++-------+-------------+------+-----+---------+-------+
+
+| Field | Type | Null | Key | Default | Extra |
+
++-------+-------------+------+-----+---------+-------+
+
+| id | varchar(10) | YES | | NULL | |
+
+| pw | varchar(10) | YES | | NULL | |
+
++-------+-------------+------+-----+---------+-------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> insert into test (id,pw) values('abc','123');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> insert into test (id,pw) values('def','456')'
+
+'>
+
+'> insert into test (id,pw) values('def','456');
+
+'> insert into test (id,pw) values('def','456')'
+
+->
+
+-> insert into test (id,pw) values('def','456')'
+
+'> insert into test (id,pw) values('def','456')'
+
+-> insert into test (id,pw) values('def','456')'
+
+'> i
+
+'>
+
+'>
+
+'> insert into test (id,pw) values('def','456');
+
+'> insert into test (id,pw) values('def','456');
+
+'>
+
+'> insert into test (id,pw) values('abc','123');
+
+'>
+
+'>
+
+'>
+
+'> '
+
+-> insert into test (id,pw) values('def','456');
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''
+
+​
+
+insert into test (id,pw) values('def','456');
+
+insert into test (id,pw) values' at line 1
+
+mysql> insert into test (id,pw) values('def','456');
+
+Query OK, 1 row affected (0.02 sec)
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| abc | 123 |
+
+| def | 456 |
+
++------+------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> select*id from test;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id from test' at line 1
+
+mysql> select id from test;
+
++------+
+
+| id |
+
++------+
+
+| abc |
+
+| def |
+
++------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> delete from test;
+
+Query OK, 2 rows affected (0.05 sec)
+
+​
+
+mysql> select*id from test;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id from test' at line 1
+
+mysql> select id from test;
+
+Empty set (0.00 sec)
+
+​
+
+mysql> select id from test;
+
++------+
+
+| id |
+
++------+
+
+| abc |
+
++------+
+
+1 row in set (0.01 sec)
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| abc | 123 |
+
++------+------+
+
+1 row in set (0.00 sec)
+
+​
+
+mysql>
+
+mysql> select*from test;
+
+Empty set (0.00 sec)
+
+​
+
+mysql> insert into test (id,pw) values('adc','123');
+
+Query OK, 1 row affected (0.05 sec)
+
+​
+
+mysql> insert into test (id,pw) values('def','456');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> insert into test (id,pw) values('ghi','789');
+
+Query OK, 1 row affected (0.02 sec)
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| adc | 123 |
+
+| def | 456 |
+
+| ghi | 789 |
+
++------+------+
+
+3 rows in set (0.00 sec)
+
+​
+
+mysql> select pw from test where id='abc';
+
+Empty set (0.00 sec)
+
+​
+
+mysql> select pw from test where id='abc';
+
+Empty set (0.00 sec)
+
+​
+
+mysql> delete from test;
+
+Query OK, 3 rows affected (0.02 sec)
+
+​
+
+mysql> insert into test (id,pw) values('abc','123');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> insert into test (id,pw) values('def','456');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> insert into test (id,pw) values('ghi','789');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> select pw from test where id='abc';
+
++------+
+
+| pw |
+
++------+
+
+| 123 |
+
++------+
+
+1 row in set (0.00 sec)
+
+​
+
+mysql> select pw from test where id='456';
+
+Empty set (0.00 sec)
+
+​
+
+mysql> select pw from test where id='456';
+
+Empty set (0.00 sec)
+
+​
+
+mysql> delete from test where id='abc';
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| def | 456 |
+
+| ghi | 789 |
+
++------+------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> update test set pw='111' where id='jdf';
+
+Query OK, 0 rows affected (0.00 sec)
+
+Rows matched: 0 Changed: 0 Warnings: 0
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| def | 456 |
+
+| ghi | 789 |
+
++------+------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> update test set pw='111' where id='def';
+
+Query OK, 1 row affected (0.03 sec)
+
+Rows matched: 1 Changed: 1 Warnings: 0
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| def | 111 |
+
+| ghi | 789 |
+
++------+------+
+
+2 rows in set (0.00 sec)
+
+​
+
+mysql> insert into test (id,pw) values('ghi','789');
+
+Query OK, 1 row affected (0.03 sec)
+
+​
+
+mysql> select*from test;
+
++------+------+
+
+| id | pw |
+
++------+------+
+
+| def | 111 |
+
+| ghi | 111 |
+
+| ghi | 789 |
+
++------+------+
+
+3 rows in set (0.00 sec)
+
+​
+
+mysql>

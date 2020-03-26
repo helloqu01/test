@@ -1,0 +1,29 @@
+MYSQL
+1.데이터베이스 만들기->2.데이터베이스 사용하기->3.테이블 만들어주기
+
+1.
+2.use lms_db;
+
+3.create table prof_table(
+prof_id char(5),
+prof_resident_id char(14),
+prof_name varchar(20),
+dept_id char(3),
+position varchar(10),
+prof_years int);
+
+
+create table stu_table(
+stu_id char(7),
+stu_resident_id char(14),
+stu_name varchar(20),
+stu_years int,
+stu_address varchar(10),
+dept_id char(3));
+
+drop table stu_table;
+select * from stu_table;
+====================================================
+-FileReadWriteClass
+  static :직접 호출할 필요가 없다.
+

@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ page import ="java.io.*" %>
+ <%@ page import ="java.net.URL" %>
+   
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>application 기본 객체를 사용하여 자원 읽기 2 </title>
+</head>
+<body>
+<%
+	//폴더 경로가 변하더라도 따로 경로를 변경 해줄 필요가 없다. 
+	String resourcePath ="/message/notice.txt ";
+	char[] buff = new char[128];
+	int len = -1;
+	//지정한 경로에 해당하는 자원을 위한 URL 생성한다.
+	URL url = application.getResource(resourcePath);
+	
+	try(InputStreamReader br = new InputStreamReader(url.openStream(),"UTF-8")){
+		while((len = br.read(buff))!=-1){
+			out.print(new String(buff,0,len));
+		}
+	}catch(IOException ex) {
+		out.println("익셉션 발생 : "+ex.getMessage());
+	}
+
+%>
+
+</body>
+</html>

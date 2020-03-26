@@ -1,0 +1,212 @@
+
+//외부 텍스트 파일을 줄단 위로 읽는 메서드 작성->한줄 읽어지는지 확인 ->mysql 드라이버 로딩 db접속 메소드->mysqldbb,table만들기
+->
+
+
+package com.db.hangul;
+
+import java.util.ArrayList;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		String url_stu ="c:/filetest/student.txt";//6번
+		String url_prof ="c:/filetest/professor.txt";//6번
+		 ArrayList<String> lines = FileReadWriteClass.readFileLines(url_stu);
+		 //7번(결과값)FileReadWriteClass.readFileLines(url_prof); ->92001, 590327-1839240, 이태규, 920, 교수, 1997)
+		 //9번 ArrayList<String> lines = 추가
+		 //System.out.println(lines.size());//10번 몇 줄 인지 확인
+		 
+		 DBReadWriteClass.connectMySQL();//15번 mysql 드라이버 성공
+		 DBReadWriteClass.dataInsert(lines);//22번 호출해서 몇조각 났는지 확인한다.
+		 DBReadWriteClass.dataSelectAll();
+		 
+	}
+}
+=============================================================================
+
+public class ChangeEncoding {
+	public ChangeEncoding() {
+
+	}
+	
+	//java -> mySQL에 저장
+	public static String toLatin(String str){//인코딩 값이 Latin으로 되어 있다.
+		
+		try {
+			byte[] b = str.getBytes();//String이 가지고 있는 getBytes메소드 //문자열을 1바이트 단위로 쪼개는 메소드
+			return new String(b,"ISO-8859-1");//ISO-8859-1는 기본 세팅 되어있다.//String 객체 생성
+			//문자열은 바이트 배열의 값을 ->ISO-8859-1으로 인코드
+			
+		} catch (UnsupportedEncodingException uee) {
+			System.out.println("인코딩 ERR : toLatin()"+uee.getMessage());
+			return null;
+		}
+	}
+	
+	//mySQL-> java로 읽기
+	public static String toUnicode(String str){
+	
+		try {
+			byte[] b = str.getBytes("ISO-8859-1");
+			//MYSQL문자열을 1바이트 단위로 쪼개는데, 단, ISO-8859-1로 쪼갬
+			return new String(b);//새로운 String 객체 생성(바이트 배열의 값으로) 
+		} catch (UnsupportedEncodingException uee) {
+			System.out.println("인코딩 ERR : Unicode()"+uee.getMessage());
+			return null;
+		}
+		
+	}
+	
+}
+============================================================================
+package com.db.hangul;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class DBReadWriteClass {
+	private static Connection conn=null;//11번 어떤베이스에 접속이 가능하다는 것을 가지고 있다. 데이터베이스에 접속 할때 마다 매번 필요하다.
+	
+	public DBReadWriteClass() {//기본 생성자
+	}
+	//mySQL 드라이버 로딩 및 db 접속 메서드
+	public static void connectMySQL() {//12번
+		try {
+			Class.forName("com.mysql.jdbc.Driver");//13번  예외처리 필요
+			System.out.println("mysql 드라이버 성공");//14번
+			String url = "jdbc:mysql://localhost:3306/lms_db";//17번 mysql 드라이버 성공
+			conn=DriverManager.getConnection(url,"root","920424");//16번 예외처리 추가
+		} catch (ClassNotFoundException e) {
+			System.out.println("mysql 드라이버 에러"+e.getMessage());
+		} catch (SQLException e) {
+			System.out.println("데이터 커넥트 에러"+e.getMessage());
+		}
+		
+	}
+	
+	//데이터 삽입 메서드(insert into~)
+	public static void dataInsert( ArrayList<String> lines) {//18번  ArrayList<String> lines입력
+		//메인으로 보낼 필요 없음으로 void를 유지한다.
+		
+		String[] words = null;//19번
+		words=lines.get(0).split(", ");//20번
+		//System.out.println(words.length);//21번 몇조각이 났는지 확인한다
+		//0			1				2	3	4	5
+		//1292001, 900424-1825409, 김광식, 3, 서울, 920
+		String name = ChangeEncoding.toLatin(words[2]);//23번
+		int y = Integer.parseInt(words[3]);
+		String addr = ChangeEncoding.toLatin(words[4]);//24번
+		
+		String queryInsert="insert into stu_table values ('"+words[0]+"','"+words[1]+"','"+name+"',"+y+",'"+addr+"','"+words[5]+"')";//25번
+		//System.out.println(queryInsert);//26번//변경되는 내용 확인 insert into stu_table values('1292001','900424-1825409','±?±¤½?',3,'¼­¿?','920')
+		
+		try {
+			Statement stmt = conn.createStatement();//27번 예외처리
+			int n=stmt.executeUpdate(queryInsert);//29번
+				if(n>0){
+					System.out.println("데이터 insert 성공");//28번//한글이 잘 들어가는 지 확인
+				}
+			
+		} catch (SQLException e) {
+			System.out.println("데이터 insert 에러"+e.getMessage());
+		}
+	}
+	
+	//전체 데이터 조회 메서드(select*from~)
+	public static void dataSelectAll() {
+		String querySelect = "select*from stu_table";//30번
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(querySelect);//31번
+			
+			ResultSetMetaData rsmd = rs.getMetaData();//32번
+			System.out.println("필드 갯수:"+rsmd.getColumnCount());
+			
+			for(int i=1;i<rsmd.getColumnCount()+1;i++){//33번
+				System.out.println(rsmd.getColumnName(i)+"\t");//이름명
+				System.out.println(rsmd.getColumnTypeName(i));//타입명
+			}
+			/*while(rs.next()){//32번
+				System.out.println(rs.getString("stu_id")+"\t");
+				System.out.println(rs.getString("stu_resident_id")+"\t");
+				String name = ChangeEncoding.toUnicode(rs.getString("stu_name"));//한글로 바꾸는 것
+				System.out.println(name+"\t");
+				System.out.println(rs.getInt("stu_years"));
+				String addr= ChangeEncoding.toUnicode(rs.getString("stu_address"));//한글로 바꾸는 것
+				System.out.println(addr);
+				System.out.println(rs.getString(" dept_id"+"\t"));
+			}*/
+			
+		} catch (SQLException e) {
+			System.out.println("데이터 Select 에러"+e.getMessage());
+		}
+	}
+	//주민번호로 데이터 조회 메서드(select*from~where~)
+	public static void dataSelectOne() {
+
+	}
+	
+	//전체 데이터 삭제 메서드(delete from~)
+	public static void dataDeleteAll() {
+	}
+	//주민번호 데이터 삭제 메서드(delete from~where~)
+	public static void dataDeleteOne() {
+	}
+	//모든 데이터 수정 메서드(update~set~)
+	public static void dataUpdateAll() {
+	}
+	//주민번호로 데이터 수정 메서드(update~set~where)
+	public static void dataUpdateOne() {
+	}
+}
+==========================================================================
+package com.db.hangul;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class FileReadWriteClass {
+	public FileReadWriteClass() {
+	}
+	
+	//외부 텍스트 파일을 줄단위로 읽는 메서드
+	public static  ArrayList<String> readFileLines(String url) {//1번 String url
+		ArrayList<String> lines = new ArrayList<String>();//4번
+		try {
+			FileReader fr = new FileReader(url);//2번
+			BufferedReader br = new BufferedReader(fr);//3번 예외처리 없음(try,catch)
+			
+			while(true){
+				String line  = br.readLine();//8번
+				if(br.readLine()==null){
+					return lines;
+				}
+				//System.out.println(br.readLine());//5번 첫번째 라인만 확인 catch를 추가한다.
+				//String line  = br.readLine();//8번의 과거코드
+				//lines.add(line);//8번의 과거코드
+				//lines.add(br.readLine());//8번 과거코드를 한줄로 줄인 코드
+				lines.add(line);//8번
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("파일에러"+e.getMessage());
+		} catch (IOException e) {
+			System.out.println("리드파일에러"+e.getMessage());
+		}
+		return lines;
+	}
+	
+	
+	//HTML 파일을 생성하는 메서드
+	public static void writeFileLines() {
+	}
+}

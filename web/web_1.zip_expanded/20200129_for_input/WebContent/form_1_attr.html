@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="form_test.jsp" accept-charset="UTF-8"
+	name ="person_info1" method ="get">
+	<input type = "submit" value ="전송"/>
+</form>
+
+<!-- 2번째 3번째 절대경로 방식 웹프로그램밍시 이 2가지 방법을 사용하면 안된다. 윗방식을 사용해야한다. -->
+
+<form action="http://localhost:8080/form_test.jsp" accept-charset="UTF-8"
+	name ="person_info2" method  ="get">
+	<input type = "submit" value ="전송"/>
+
+<form action="http://localhost:8080/for_input/form_test.jsp" accept-charset="UTF-8"
+	name ="person_info3" method  ="get">
+	<input type = "submit" value ="전송"/>
+
+</body>
+</html>

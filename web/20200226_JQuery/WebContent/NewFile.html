@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<!-- 자바스크립트를 사용하려면 script를 선언하고 닫아준다. -->
+	<script type="text/javascript">
+	var test=10;//변수 선언
+	function fuc1() { //함수 선언
+		//alert("경고창", "경고메시지"); //경고창을 띄우는 방법	
+		var tb=document.getElementById("t");//<table></table>객체  /* ID를 이용해서 해당 테이블 객체를 얻어낼 수 있다.<html>이 가지고있는 모든 태그는 하나의 객체로 존재한다. */
+		var tags="<tr><td>데이터</td></tr>";
+		tb.innerHTML=tags;
+	}
+
+	</script>
+</head>
+	<!-- body태그가 끝나면 마우스 윈쪽버튼을 눌럿다 땟을 때 이벤트 발생. 문서 로딩이 끝난 후에 함수 호출하고 싶다면 이와같이 사용 - 어떠한 이벤트 발생 -->
+	<body onload="fuc1()">
+	<input type="button" value="경고메시지"  onclick = "fuc1()"/>
+	<!-- 버튼 눌렀을 때, 호출하고 싶다면 이와같이 사용 - 이벤트 발생 -->
+	
+	<table id = "t" border="1"> <!-- 테이블에 아이디 값 부여 -->
+	
+	
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;AbelBi&apos; to &apos;AbelBi_project&apos;" description="Rename resource &apos;AbelBi&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/AbelBi" name="AbelBi_project" stamp="1582335815644" updateReferences="true"/>
+</session>

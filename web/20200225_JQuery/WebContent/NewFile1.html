@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+   var test=10;      /* 변수 선언 방법  */
+   function fnc1(){   /*함수를 만들 때  */
+      alert("경고창", "안대요");   /* 경고창 띄워주는 함수(스크립트 내장 함수-반드시 문자열만 포함) */
+   }
+</script>
+</head>
+
+<body onload="fnc1()">      <!-- 문서 로딩이 끝난 후에 함수 호출하고 싶다면 이와같이 사용 - 어떠한 이벤트 발생 -->
+   <input type="button" value="경고메시지" onclick="fnc1()" />   <!-- 버튼 눌렀을 때, 호출하고 싶다면 이와같이 사용 - 이벤트 발생 -->
+</body>
+</html>

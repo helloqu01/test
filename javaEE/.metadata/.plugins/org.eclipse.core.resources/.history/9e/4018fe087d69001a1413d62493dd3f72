@@ -1,0 +1,12 @@
+package com.ohj.emp;
+
+public class ResultDate {
+
+	int r1;// 4번
+	float r2;
+	String r3;
+
+	public ResultDate() {
+		}
+
+}

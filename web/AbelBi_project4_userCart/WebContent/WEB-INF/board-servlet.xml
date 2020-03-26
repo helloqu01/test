@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd" >
+
+<bean id="defaultHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+<bean id="boardDAO" class="board.dao.BoardDAO" />
+
+<bean name="/adminList.do" class="board.controller.AdminListActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/writeui.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController" >
+	<property name="viewName" value="write"> </property>
+</bean>
+
+<bean name="/adminWrite.do" class="board.controller.AdminWriteActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+	<property name="commandClass" value="board.command.BoardCommand"></property>
+</bean>
+
+<bean name="/adminRetrieve.do" class="board.controller.AdminRetrieveActionController" >
+	<property name="dao">
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/adminUpdate.do" class="board.controller.AdminUpdateActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+	<property name="commandClass" value="board.command.BoardCommand"></property>
+</bean>
+
+<bean name="/adminDelete.do" class="board.controller.AdminDeleteActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/adminSearch.do" class="board.controller.AdminSearchActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/userList.do" class="board.controller.UserListActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/userRetrieve.do" class="board.controller.UserRetrieveActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean name="/userSearch.do" class="board.controller.UserSearchActionController" >
+	<property name="dao" >
+		<ref bean="boardDAO" />
+	</property>
+</bean>
+
+<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+	<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView" />
+	<property name="prefix" value="/" />
+	<property name="suffix" value=".jsp" />
+</bean>
+
+</beans>

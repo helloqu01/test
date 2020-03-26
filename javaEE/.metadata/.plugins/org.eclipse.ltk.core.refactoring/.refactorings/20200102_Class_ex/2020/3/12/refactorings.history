@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.ohj&apos; to &apos;com.ohj.classes&apos;&#x0A;- Original project: &apos;20200102_Class_ex&apos;&#x0A;- Original element: &apos;20200102_Class_ex/src/com.ohj&apos;&#x0A;- Renamed element: &apos;20200102_Class_ex/src/com.ohj.classes&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.ohj&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.ohj" name="com.ohj.classes" qualified="false" references="true" stamp="1584271382214" textual="false" version="1.0"/>
+</session>

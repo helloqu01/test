@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;20200117_population_in_seoul_01&apos;&#x0A;- Original project: &apos;20200117_population_in_seoul_01&apos;&#x0A;- Original elements:&#x0A;     ChangeEncoding.java&#x0A;     DBReadWriteClass.java&#x0A;     FileReadWriteClass.java&#x0A;     MainClass.java" description="Delete elements" element1="MainClass.java" element2="ChangeEncoding.java" element3="FileReadWriteClass.java" element4="DBReadWriteClass.java" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1584492740960" subPackages="false" version="1.0"/>
+</session>

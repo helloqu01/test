@@ -1,0 +1,65 @@
+use testdb;
+
+create table member
+
+테이블 구조 변경(alter table/ add, change, drop
+
+1.테이블에 필드 추가
+alter table 테이블명 add 추가할필드명 데이터타입;
+alter table member add age int(4);
+alter table member add age varchar(4);
+
+2.테이블에 필드 변경
+alter table 테이블명 change 어떤필드명을 무슨필드명으로 데이터타입;
+alter table member change email url varchar(30);
+
+3.테이블에 필드 삭제
+alter table 테이블명 drop 삭제할필드명;
+alter table member drop url;
+=====================
+데이터가 삽입 될 떄마다 자동으로 1씩 증가하는 필드
+자동으로 1씩 증가 : auto_increment
+필드속성 : 중복값이 있으면 안되기 때문에 :  primary key 추가
+해당 필드의 데이터 값은 없으면 안되기 때문에 : not null 추가
+
+ *not null:필수 입력부부분에서 사용
+ 
+ ===============================
+ mysql> create table member2(
+    -> idx int not null auto_increment,
+    -> name varchar(20),
+    -> age int,
+    -> primary key(idx);
+
+insert into member2(name,age) values('kkk',11);
+
+select *from member2;
+
+insert into member2(name,age) values('오현지',11);
+
+delete from member2 where name = '오현지';// 삭제 후 다시 그 자리로 새로운 데이터가 들어가지 않는다.
+
+select *from member2 order by idx desc;//가장최근에 입력된 데이터를 보여갈라
+
+===================================
+load data 이용하여 테이블에 입력
+mysql> load data infile '/home/sunsoo/score.txt' into table score_1;
+3. 수학성적 높은순 5명 출력
+mysql> select * from score_1 order by math desc limit 5;
+4. 영어성적이 낮은 순으로 5명 출력
+mysql> select * from score_1 order by eng asc limit 5;
+5. 이름순 정렬 2명 출력
+mysql> select * from score_1 order by name asc limit 2;
+6.수학 총점과 평균
+mysql> select avg(math) from score_1;
+mysql> select max(math) from score_1;
+7.영어와 바이오가 평균 85이상인 출력
+mysql> select count(*) from score_1 where eng > 85 && bio > 85;
+8. 수학과 바이오가 90이상인 학생 숫자
+mysql> select count(*) from score_1 where bio > 90 || math > 90;
+9.소문자s가 들어간 학생 출력
+mysql> select * from score_1 where name like 'S%';
+
+
+
+

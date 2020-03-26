@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;20200129_thread_bank2&apos;&#x0A;- Original project: &apos;20200129_thread_bank2&apos;&#x0A;- Original elements:&#x0A;     sync.ohj.Bank.java&#x0A;     sync.ohj.Mesync.java&#x0A;     sync.ohj.MeWifeSyncMain.java&#x0A;     sync.ohj.wifesync.java" description="Delete elements" element1="/src&lt;sync.ohj{MeWifeSyncMain.java" element2="/src&lt;sync.ohj{Bank.java" element3="/src&lt;sync.ohj{Mesync.java" element4="/src&lt;sync.ohj{wifesync.java" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1584497098791" subPackages="false" version="1.0"/>
+</session>

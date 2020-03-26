@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%--
+jsp는 응답 결과를 곧바로 웹브라우저에 전송하지 않는다. 
+대신 출력버퍼 라고 불리는 곳에 임시로 응답결과를 저장했다가 한번에 웹브라우저에 전송한다. 
+장점 : 데이터 전송 성능 향상
+	jsp 실행 도중에 버퍼를 비우고 새로운 내용 전송가능(ex))<jsp:forward>기능 과 에러 페이지처리 기
+	버퍼가 다 차기전까지 헤더 변경가
+ --%>
+ <%@ page buffer = "4kb" %>
+ <%--버퍼 속성을 지정하지 않으면 기본 8kb이상의 크기를 갖는 버퍼를 사용하도록 규정하고 있다. --%>
+ 
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+ 
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>this.id로 DOM 요소의 id 속성 가져오기</title>
+
+    <style type="text/css">
+        .redColor{ color:Red }
+    </style>
+
+    <script src="jquery-1.6.2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+        	
+        	//[1]닷넷코리아 레이어 클릭 시 CSS클래스 해제
+        	$('#dnk').bind('click', function () {
+				
+        		//[A]해제
+        		$('#mainMenu .redColor').removeClass('redColor');//3개의 요소의 CSS
+        		//[b]#dnk만 다시 적용
+        		$(this).addClass('redColor');//현재 나만 다시 적용
+			});
+        	
+        	//[2] mainManu의 모든 항목에 대해서 click 이벤트 적용
+        	$('#mainMenu .redColor').bind("click", function () {
+        		//[!]this.id로 분기
+				if(this.id=="va"){
+					alert("비주얼 아카데미 클릭");
+				}else if(this.id=="aa"){
+					alert($(this).text());//#11 안에 들어 있는 텍스트
+				}
+			});
+
+
+
+
+        }
+
+        );
+
+    </script>
+
+</head>
+
+<body>
+    <div id="mainMenu">
+        <div id="dnk" class="redColor">닷넷코리아</div>
+        <div id="va" class="redColor">비주얼아카데미</div>
+        <div id="aa" class="redColor">라이선스랜드</div>
+    </div>
+</body>
+
+</html>
